@@ -60,6 +60,15 @@ const Todo = () => {
       completed: !todo.completed,
     });
   };
+
+  // update todo text
+
+  const editTodo = async (id, newText) => {
+    await updateDoc(doc(db, "todos", id), {
+      text: newText,
+    });
+  };
+
   // delete todo
 
   const deleteTodo = async (id) => {
@@ -94,6 +103,7 @@ const Todo = () => {
                 todo={todo}
                 toggleComplete={toggleComplete}
                 deleteTodo={deleteTodo}
+                editTodo={editTodo}
               />
             ))}
           </div>
